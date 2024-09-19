@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request, redirect
 from flask_sqlalchemy import SQLAlchemy
 from math import ceil
 from datetime import datetime
@@ -15,7 +15,7 @@ class Product(db.Model):
     name = db.Column(db.String(100))
     price = db.Column(db.Float)
     category = db.Column(db.String(50))
-    created_at = db.Column(db.DateTime, default=lambda: datetime.now(IST))  # Corrected default
+    created_at = db.Column(db.DateTime, default=lambda: datetime.now(IST)) 
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
@@ -33,7 +33,6 @@ def index():
     total_products = products_query.count()
     total_pages = ceil(total_products / per_page)
 
-    # Sort by created_at for the newest products first
     products = products_query.order_by(Product.created_at.desc()).offset(offset).limit(per_page).all()
 
     return render_template('index.html', products=products, total_pages=total_pages, current_page=page)
@@ -63,12 +62,10 @@ def edit(id):
         product.name = request.form['name']
         product.price = request.form['price']
         product.category = request.form['category']
-        try:
-            db.session.commit()
-            return redirect('/')
-        except:
-            return 'There was an issue updating your product'
+        db.session.commit()
+        return redirect('/')
     return render_template('edit.html', product=product)
+
 
 @app.route('/delete/<int:id>')
 def delete(id):
@@ -82,5 +79,5 @@ def delete(id):
 
 if __name__ == "__main__":
     with app.app_context():
-        db.create_all()  # This will create the database and tables
+        db.create_all()  
     app.run(debug=True)

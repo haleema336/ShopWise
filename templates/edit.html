@@ -18,7 +18,7 @@
             <input type="text" name="name" value="{{ product.name }}" placeholder="Enter product name" required>
             <input type="number" name="price" value="{{ product.price }}" placeholder="Enter product price" required>
             <select name="category" required>
-                <option value="" disabled>Category</option>
+                <option value="" disabled {% if product.category is none %}selected{% endif %}>Category</option>
                 <option value="electronics" {% if product.category == 'electronics' %}selected{% endif %}>Electronics</option>
                 <option value="clothing" {% if product.category == 'clothing' %}selected{% endif %}>Clothing</option>
                 <option value="groceries" {% if product.category == 'groceries' %}selected{% endif %}>Groceries</option>
@@ -30,6 +30,7 @@
                 <option value="automotive" {% if product.category == 'automotive' %}selected{% endif %}>Automotive</option>
                 <option value="jewelry" {% if product.category == 'jewelry' %}selected{% endif %}>Jewelry</option>
             </select>
+            
             
             <button type="submit">Update Product</button>
         </form>

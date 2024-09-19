@@ -100,26 +100,26 @@ ul {
 }
 
 .product-item {
-    display: flex; /* Use flexbox to align items in a row */
-    justify-content: space-between; /* Space items evenly */
-    align-items: center; /* Center items vertically */
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
     padding: 10px;
-    border-bottom: 1px solid #ddd; /* Add a bottom border for separation */
+    border-bottom: 1px solid #ddd; 
 }
 
 .product-info {
-    flex-grow: 1; /* Allow this section to take up available space */
+    flex-grow: 1; 
 }
 
 .product-date {
-    margin-right: 15px; /* Space between date and buttons */
-    text-align: right; /* Align text to the right */
-    flex-basis: 150px; /* Fixed width for the date column */
+    margin-right: 15px; 
+    text-align: right; 
+    flex-basis: 150px; 
 }
 
 .product-actions {
-    display: flex; /* Align buttons horizontally */
-    gap: 10px; /* Space between buttons */
+    display: flex; 
+    gap: 10px; 
 }
 
 li {
