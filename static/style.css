@@ -1,4 +1,3 @@
-
 body {
     font-family: 'Arial', sans-serif;
     background-color: #f4f4f4;
@@ -100,6 +99,29 @@ ul {
     padding: 0;
 }
 
+.product-item {
+    display: flex; /* Use flexbox to align items in a row */
+    justify-content: space-between; /* Space items evenly */
+    align-items: center; /* Center items vertically */
+    padding: 10px;
+    border-bottom: 1px solid #ddd; /* Add a bottom border for separation */
+}
+
+.product-info {
+    flex-grow: 1; /* Allow this section to take up available space */
+}
+
+.product-date {
+    margin-right: 15px; /* Space between date and buttons */
+    text-align: right; /* Align text to the right */
+    flex-basis: 150px; /* Fixed width for the date column */
+}
+
+.product-actions {
+    display: flex; /* Align buttons horizontally */
+    gap: 10px; /* Space between buttons */
+}
+
 li {
     display: flex;
     justify-content: space-between;
@@ -109,15 +131,6 @@ li {
     padding: 10px;
     border: 1px solid #ddd;
     border-radius: 4px;
-}
-
-.product-info {
-    flex-grow: 1;
-}
-
-.product-actions {
-    display: flex;
-    justify-content: flex-end;
 }
 
 .edit-button, .delete-button {

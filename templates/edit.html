@@ -22,7 +22,15 @@
                 <option value="electronics" {% if product.category == 'electronics' %}selected{% endif %}>Electronics</option>
                 <option value="clothing" {% if product.category == 'clothing' %}selected{% endif %}>Clothing</option>
                 <option value="groceries" {% if product.category == 'groceries' %}selected{% endif %}>Groceries</option>
+                <option value="home" {% if product.category == 'home' %}selected{% endif %}>Home</option>
+                <option value="books" {% if product.category == 'books' %}selected{% endif %}>Books</option>
+                <option value="toys" {% if product.category == 'toys' %}selected{% endif %}>Toys</option>
+                <option value="beauty" {% if product.category == 'beauty' %}selected{% endif %}>Beauty</option>
+                <option value="sports" {% if product.category == 'sports' %}selected{% endif %}>Sports</option>
+                <option value="automotive" {% if product.category == 'automotive' %}selected{% endif %}>Automotive</option>
+                <option value="jewelry" {% if product.category == 'jewelry' %}selected{% endif %}>Jewelry</option>
             </select>
+            
             <button type="submit">Update Product</button>
         </form>
     </div>
