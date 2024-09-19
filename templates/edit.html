@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Product</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <div class="banner">
+            <img src="{{ url_for('static', filename='images/banner.jpg') }}" alt="Shopping Banner">
+        </div>
+        <h1>ShopWise</h1>
+        <p class="tagline">Track your shopping</p>
+        <h2>Edit Product</h2>
+        <form action="" method="POST" class="add-product-form">
+            <input type="text" name="name" value="{{ product.name }}" placeholder="Enter product name" required>
+            <input type="number" name="price" value="{{ product.price }}" placeholder="Enter product price" required>
+            <select name="category" required>
+                <option value="" disabled>Category</option>
+                <option value="electronics" {% if product.category == 'electronics' %}selected{% endif %}>Electronics</option>
+                <option value="clothing" {% if product.category == 'clothing' %}selected{% endif %}>Clothing</option>
+                <option value="groceries" {% if product.category == 'groceries' %}selected{% endif %}>Groceries</option>
+            </select>
+            <button type="submit">Update Product</button>
+        </form>
+    </div>
+</body>
+</html>
