@@ -15,7 +15,7 @@ class Product(db.Model):
     name = db.Column(db.String(100))
     price = db.Column(db.Float)
     category = db.Column(db.String(50))
-    created_at = db.Column(db.DateTime, default=lambda: datetime.now(IST)) 
+    created_at = db.Column(db.DateTime, default=lambda: datetime.now(IST))
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
@@ -26,7 +26,10 @@ def index():
     per_page = 5
     offset = (page - 1) * per_page
 
-    products_query = Product.query.filter(Product.name.contains(search_query))
+    products_query = Product.query
+    if search_query:
+        products_query = products_query.filter(Product.name.contains(search_query))
+    
     if category:
         products_query = products_query.filter(Product.category == category)
 
@@ -35,7 +38,9 @@ def index():
 
     products = products_query.order_by(Product.created_at.desc()).offset(offset).limit(per_page).all()
 
-    return render_template('index.html', products=products, total_pages=total_pages, current_page=page)
+    search_results = bool(search_query and total_products > 0)
+
+    return render_template('index.html', products=products, total_pages=total_pages, current_page=page, search_results=search_results)
 
 @app.route('/add', methods=['POST'])
 def add_product():
@@ -65,7 +70,6 @@ def edit(id):
         db.session.commit()
         return redirect('/')
     return render_template('edit.html', product=product)
-
 
 @app.route('/delete/<int:id>')
 def delete(id):

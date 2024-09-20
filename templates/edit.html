@@ -13,6 +13,10 @@
         </div>
         <h1>ShopWise</h1>
         <p class="tagline">Track your shopping</p>
+        <div class="button-container">
+            <a href="{{ url_for('index') }}" class="back-home-button">Back to Home</a>
+        </div>
+
         <h2>Edit Product</h2>
         <form action="" method="POST" class="add-product-form">
             <input type="text" name="name" value="{{ product.name }}" placeholder="Enter product name" required>
